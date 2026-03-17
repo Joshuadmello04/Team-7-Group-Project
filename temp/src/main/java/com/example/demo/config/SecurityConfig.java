@@ -34,7 +34,9 @@ public class SecurityConfig {
                     .requestMatchers("/auth/**").permitAll()
                     .anyRequest().authenticated()
             )
-            .addFilterBefore(jwtFilter, UsernamePasswordAuthenticationFilter.class);
+            .addFilterBefore(jwtFilter, UsernamePasswordAuthenticationFilter.class)
+            .httpBasic(h -> h.disable())   // 👈 changed
+            .formLogin(f -> f.disable());  // 👈 changed
 
         return http.build();
     }

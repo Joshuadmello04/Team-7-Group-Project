@@ -20,6 +20,7 @@ public class AuthController {
     // ✅ Register
     @PostMapping("/register")
     public String register(@RequestBody User user) {
+    	System.out.println("REGISTER HIT");
         authService.register(user);
         return "User registered successfully";
     }
